@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
+        
         m_Movement.Set (horizontal, 0f, vertical);
         m_Movement.Normalize();
 
@@ -30,11 +30,11 @@ public class PlayerMovement : MonoBehaviour
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool("IsWalking", isWalking);
 
-        Vector3 desiredFoward = Vector3.RotateTowards(
+        Vector3 desiredForward = Vector3.RotateTowards(
             transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f
         );
-
-        m_Rotation = Quaternion.LookRotation(desiredFoward);
+        
+        m_Rotation = Quaternion.LookRotation(desiredForward);
     }
 
     void OnAnimatorMove()
